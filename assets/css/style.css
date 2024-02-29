@@ -1,0 +1,324 @@
+/* reset css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* reset css */
+
+/* 横はみ出し無効 */
+body {
+    overflow-x: hidden;
+}
+/* 横はみ出し無効 */
+
+section {
+    width: 100vw;
+    height: 100vh;
+}
+
+/* 大きな画像部分 */
+.welcome {
+    position: relative;
+    background: url('../img/sweets1.jpg') no-repeat center/cover;
+}
+.welcome::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.485);
+}
+section h1 {
+    color: #f3f3f3;
+    font-size: 56px;
+    z-index: 1;
+}
+.have-fun {
+    position: relative;
+    background: url('../img/sweets2.jpg') no-repeat center/cover;
+}
+.have-fun::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.485);
+}
+
+.parallax-img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: url('../img/sweets3.jpg') no-repeat center/cover;
+    background-attachment: fixed;
+}
+.parallax-img::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.485);
+}
+/* 大きな画像部分 */
+
+/* テキスト部分 */
+.content {
+    background: rgb(105, 4, 4);
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+/* 消しておきたいdiv要素のデザイン + 消す */
+.column.box-1, 
+.column.box-2,
+.column.box-3 {
+    width: 35%;
+    height: 300px;
+    background: #ffead4db;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+/* javascriptでクラス付与したら出現 */
+.column.box-1.visible, 
+.column.box-2.visible,
+.column.box-3.visible {
+    opacity: 1;
+}
+.column h2 {
+    color: rgba(32, 9, 117);
+    padding: 1rem 2rem;
+}
+.column p {
+    color: rgba(32, 9, 117);
+    padding: 1rem 2rem 3rem 2rem;
+}
+.column.box-1 h2,
+.column.box-1 p {
+    transform: translateX(-20%);
+    opacity: 0;
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+.column.box-1 h2.slide-in,
+.column.box-1 p.slide-in {
+    transform: translateX(0);
+    opacity: 1;
+}
+.column.box-2 h2,
+.column.box-2 p {
+    transform: translateX(20%);
+    opacity: 0;
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+.column.box-2 h2.slide-in,
+.column.box-2 p.slide-in {
+    transform: translateX(0);
+    opacity: 1;
+}
+.column.box-3 h2,
+.column.box-3 p {
+    transform: translateY(40%);
+    opacity: 0;
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+.column.box-3 h2.slide-in,
+.column.box-3 p.slide-in {
+    transform: translateX(0);
+    opacity: 1;
+}
+/* テキスト部分 */
+
+/* フッター */
+footer {
+    width: 100%;
+    height: 300px;
+    background: rgb(105, 4, 4);
+}
+ul {
+    display: flex;
+    flex-direction: column;
+}
+ul > li {
+    list-style: none;
+    padding: 3rem 1rem 0 1rem;
+}
+ul > li:nth-last-child(1) {
+    margin-bottom: 3rem;
+}
+li:hover {
+    border-bottom: 1px solid #f3f3f3;
+}
+a {
+    cursor: pointer;
+    text-decoration: none;
+    color: #f3f3f3;
+}
+/* フッター */
+
+/* メニュー */
+.menu-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+.menu-wrap .toggler {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    opacity: 0;
+}
+.menu-wrap .humburger {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 60px;
+    height: 60px;
+    padding: 1rem;
+    background-color: rgb(105, 4, 4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.menu-wrap .humburger > div {
+    position: relative;
+    flex: none;
+    width: 100%;
+    height: 2px;
+    background: #f3f3f3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+}
+.menu-wrap .humburger > div::before,
+.menu-wrap .humburger > div::after {
+    content: '';
+    position: absolute;
+    z-index: 3;
+    top: -10px;
+    width: 100%;
+    height: 2px;
+    background: inherit;
+}
+.menu-wrap .humburger > div::after {
+    top: 10px;
+}
+
+.menu-wrap .toggler:checked + .humburger > div {
+    transform: rotate(225deg);
+}
+.menu-wrap .toggler:checked + .humburger > div::before,
+.menu-wrap .toggler:checked + .humburger > div::after {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+.menu-wrap .toggler:checked ~ .menu {
+    visibility: visible;
+}
+.menu-wrap .menu {
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.menu-wrap .menu > div {
+    background: rgb(105, 4, 4);
+    width: 200vw;
+    height: 200vh;
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(-110%);
+    transition: all 0.4s ease;
+}
+.menu-wrap .menu > div div {
+    text-align: center;
+    max-width: 90vw;
+    max-height: 100vh;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+.menu-wrap .toggler:checked ~ .menu > div > div {
+    opacity: 1;
+    transition: opacity 0.4s ease 0.4s;
+}
+.menu-wrap .menu > div > div > ul > li {
+    list-style: none;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+.menu-wrap .menu > div > div > ul > li:hover {
+    border-bottom: none;
+}
+.menu-wrap .menu > div > div > ul > li > a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.4s ease;
+}
+
+.menu-wrap .toggler:checked ~ .menu > div {
+    transform: translateX(0);
+    transition-duration: 0.75s;
+}
+
+.btn-container {
+    display: flex;
+    width: 100%;
+    justify-content: end;
+}
+.back-to-top {
+    display: none;
+    margin: 3rem;
+    border: none;
+    background:rgba(105, 4, 4, 0.692);
+    font-size: 2rem;
+    color: #f3f3f3;
+    padding: 1rem;
+    cursor: pointer;
+    position: fixed;
+    bottom: 0;
+    animation-name: fadeBtn;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    z-index: 1;
+}
+@keyframes fadeBtn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+/* メニュー */
